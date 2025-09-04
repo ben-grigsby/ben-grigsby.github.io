@@ -1,64 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ben Grigsby | Data Portfolio</title>
-  <link rel="stylesheet" href="style.css"> <!-- Optional CSS file -->
+  <style>
+    :root {
+      --bg-dark: #00072D;
+      --bg-mid: #001C55;
+      --blue-primary: #0A2472;
+      --blue-accent: #0E6BA8;
+      --blue-light: #A6E1FA;
+      --text-light: #F4F4F4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue-light);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--blue-accent);
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--bg-mid);
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 4px solid var(--blue-primary);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--blue-light);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      color: var(--blue-light);
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--blue-accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.3rem;
+    }
+
+    .project {
+      background: var(--bg-mid);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--blue-primary);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .project h3 {
+      margin-top: 0;
+      color: var(--blue-light);
+    }
+
+    .project p {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills, .contact {
+      background: var(--bg-mid);
+      padding: 1.5rem;
+      border-left: 5px solid var(--blue-accent);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      background: var(--bg-mid);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--blue-light);
+      border-top: 2px solid var(--blue-accent);
+    }
+
+    /* Loader Styles */
+    .loader-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: var(--bg-dark);
+      color: var(--blue-light);
+    }
+
+    .sql-stack-loader {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      margin: 0 auto 20px auto;
+    }
+
+    .disc {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 60px;
+      height: 16px;
+      border-radius: 50%;
+      opacity: 0;
+      animation: stackDisc 1.5s infinite;
+    }
+
+    .layer1 {
+      bottom: 0;
+      background: #001C55;
+      animation-delay: 0s;
+    }
+
+    .layer2 {
+      bottom: 20px;
+      background: #0A2472;
+      animation-delay: 0.3s;
+    }
+
+    .layer3 {
+      bottom: 40px;
+      background: #A6E1FA;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes stackDisc {
+      0% { opacity: 0; transform: scale(0.8); }
+      30% { opacity: 1; transform: scale(1); }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #main-content {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Loader Section -->
+  <div class="loader-wrapper" id="loader">
+    <div class="sql-stack-loader">
+      <div class="disc layer1"></div>
+      <div class="disc layer2"></div>
+      <div class="disc layer3"></div>
+    </div>
+    <p style="text-align: center; color: #A6E1FA; margin-top: 1rem;">Querying Ben’s Portfolio...</p>
+  </div>
 
-  <header>
-    <h1>Ben Grigsby</h1>
-    <p>UC Davis | Statistics + Machine Learning</p>
-    <p>Focused on Data Engineering & Data Science</p>
-  </header>
+  <!-- Main Portfolio Content (hidden at first) -->
+  <div id="main-content">
+    <header>
+      <h1>Ben Grigsby</h1>
+      <p>UC Davis · Statistics + ML · Data Engineering | Analytics</p>
+    </header>
 
-  <section>
-    <h2>🔧 Projects</h2>
+    <div class="container">
+      <section>
+        <h2>🔥 Projects</h2>
 
-    <div class="project">
-      <h3>📦 Walmart M5 Sales Forecasting</h3>
-      <ul>
-        <li>Automated pipeline for 100M+ rows using medallion architecture</li>
-        <li>XGBoost & Random Forest to improve forecasts</li>
-        <li>Daily model updates via weather + orchestration</li>
-      </ul>
-      <a href="https://github.com/YOUR_USERNAME/walmart-forecasting" target="_blank">GitHub Repo</a>
+        <div class="project">
+          <h3>📦 Walmart M5 Sales Forecasting</h3>
+          <p>Automated 100M+ row dataset with medallion architecture and weather-enhanced ML forecasts. Created dashboard and daily refresh system.</p>
+          <a href="https://github.com/YOUR_USERNAME/walmart-forecasting" target="_blank">→ View GitHub Repo</a>
+        </div>
+
+        <div class="project">
+          <h3>🌐 NYC Taxi Streaming Pipeline</h3>
+          <p>Real-time ingestion using Kafka, Airflow, and PostgreSQL. Built for streaming + batch processing with anomaly detection and dashboards.</p>
+          <a href="https://github.com/YOUR_USERNAME/nyc-taxi-stream" target="_blank">→ View GitHub Repo</a>
+        </div>
+
+        <div class="project">
+          <h3>🧠 Customer Churn Analysis</h3>
+          <p>Ensemble models + SHAP explanations + SQL feature engineering. Focused on reducing churn and surfacing high-risk customer segments.</p>
+          <a href="https://github.com/YOUR_USERNAME/customer-churn" target="_blank">→ View GitHub Repo</a>
+        </div>
+      </section>
+
+      <section class="skills">
+        <h2>🛠 Skills</h2>
+        <p><strong>Languages:</strong> Python, SQL, Bash</p>
+        <p><strong>Tools:</strong> Kafka, Airflow, Spark, Docker, Postgres, Redshift, Glue, S3</p>
+        <p><strong>Concepts:</strong> Stream Processing, Medallion Architecture, Star Schema, Machine Learning</p>
+      </section>
+
+      <section class="contact">
+        <h2>📫 Contact</h2>
+        <p>Email: your.email@example.com</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/ben-grigsby" target="_blank">linkedin.com/in/ben-grigsby</a></p>
+      </section>
     </div>
 
-    <div class="project">
-      <h3>🌐 NYC Taxi Streaming Pipeline</h3>
-      <ul>
-        <li>Kafka + Airflow + PostgreSQL with Docker</li>
-        <li>Simulated real-time predictions and clustering</li>
-      </ul>
-      <a href="https://github.com/YOUR_USERNAME/nyc-taxi-stream" target="_blank">GitHub Repo</a>
-    </div>
+    <footer>
+      © 2025 Ben Grigsby · Portfolio Built with ❤️ and Nautical Blues
+    </footer>
+  </div>
 
-    <div class="project">
-      <h3>🧠 Customer Churn Analysis</h3>
-      <ul>
-        <li>SHAP explainability + actionable business insights</li>
-        <li>SQL + Python + modeling best practices</li>
-      </ul>
-      <a href="https://github.com/YOUR_USERNAME/customer-churn" target="_blank">GitHub Repo</a>
-    </div>
+  <!-- JavaScript to control loader visibility -->
+  <script>
+    const MIN_LOAD_TIME = 3500; // in milliseconds
+    const start = Date.now();
 
-  </section>
+    window.addEventListener("load", function() {
+      const timeElapsed = Date.now() - start;
+      const delay = Math.max(0, MIN_LOAD_TIME - timeElapsed);
 
-  <section>
-    <h2>🛠️ Skills</h2>
-    <p><strong>Languages:</strong> Python, SQL, Bash</p>
-    <p><strong>Tools:</strong> Kafka, Airflow, Spark, Docker, S3, Glue, Redshift</p>
-    <p><strong>Concepts:</strong> Medallion Architecture, Star Schema, Stream Processing, ML Modeling</p>
-  </section>
-
-  <section>
-    <h2>📫 Contact</h2>
-    <p>Email: your.email@example.com</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/ben-grigsby" target="_blank">ben-grigsby</a></p>
-  </section>
-
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }, delay);
+    });
+  </script>
 </body>
 </html>
